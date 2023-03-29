@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct  node {
+struct  Node {
     int data;
-    struct node *next;
+    struct Node *next;
 }*first=NULL;
 
 void create(int A[], int n)
 {
     int i;
-    struct node *t, *last;
+    struct Node *t, *last;
 
-    first = (struct  node *)malloc(sizeof (struct node));
+    first = (struct  Node *)malloc(sizeof (struct Node));
     first->data = A[0];
-    first->next = NULl;
+    first->next = NULL;
     last = first;
 
     for (i = 1; i < n ; i++) {
-        t = (struct node *)malloc(sizeof(struct node));
+        t = (struct Node *)malloc(sizeof(struct Node));
         t->data = A[i];
         t->next = NULL;
         last->next = t;
@@ -29,7 +29,7 @@ void create(int A[], int n)
 int main(int argc, char *argv[])
 {
     int A[] = {3,5,7,10,15};
-    return;
+    return 0;
 }
 
 
