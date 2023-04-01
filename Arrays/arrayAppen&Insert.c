@@ -27,6 +27,7 @@ void Append(struct array *m, int x){
 int main()
 {
     struct array arr = {{1,2,3,4,5}, 10, 5};
+    Append(arr, 10);
     display(arr);
     return 0;
 }
