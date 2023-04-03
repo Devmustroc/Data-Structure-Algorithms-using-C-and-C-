@@ -68,6 +68,8 @@ int Linear_Search(struct array *m, int key)
         {
             // transposition
             // swap(&m->A[i], &m->A[i-1]);
+            // move to head
+            swap(&m->A[i], &m->A[0]);
             printf("Element found at index %d \n", i);
             return i;
         }
