@@ -2,7 +2,7 @@
 
 
 struct array {
-    int A[10];
+    int A[20];
     int size;
     int length;
 };
@@ -127,6 +127,16 @@ void Set(struct array *m, int index, int x)
     }
 }
 
+int Max(struct array m)
+{
+    int max = 0;
+    for (int i = 0; i < m.length; i++) {
+        if (max < m.A[i]) {
+            max = m.A[i];
+        }
+    }
+}
+
 int Sum(struct array m)
 {
     int total = 0;
@@ -149,13 +159,14 @@ int RecursiveSum(struct array m, int n)
 
 int main()
 {
-    struct array arr = {{1,2,3,4,5}, 10, 5};
+    struct array arr = {{8,25,2,5,3,10,0, 50,49,30,52}, 20, 11};
     display(arr);
     printf("%d \n",Get(arr, 3));
     Set(&arr, 3, 10);
     display(arr);
     printf("%d \n", Sum(arr));
     printf("%d \n", RecursiveSum(arr, arr.length));
+    printf("%d \n", Max(arr));
 
 
 
