@@ -62,7 +62,7 @@ void swap(int *x, int *y)
 
 int Linear_Search(struct array *m, int key)
 {
-    for (int i = 0; i < m->length; i ++)
+    for (int i = 0; i < m->length; i++)
     {
         if (key == m->A[i])
         {

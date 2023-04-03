@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 struct Array {
-    int A[20];
+    int A[5];
     int length;
     int size;
 };
@@ -24,11 +24,9 @@ void Append(struct Array *m, int x)
 
 int Deleting(struct Array *m, int index)
 {
-    int x = 0;
-
     if (index > 0 && index < m->length)
     {
-        x = m->A[index];
+         int x = m->A[index];
         for (int i = index; i < m->length - 1; i++)
         {
             m->A[i] = m->A[i + 1];
@@ -61,14 +59,14 @@ void swap(int *m, int *n)
 
 int Linear_Search(struct Array *m, int key)
 {
-    for (int i = 0; i < m->length; i ++)
+    for (int i = 0; i < m->length; i++)
     {
         if (key == m->A[i])
         {
             // transposition
-            // swap(&m->A[i], &m->A[i-1]);
+            swap(&m->A[i], &m->A[i-1]);
             // move to head
-            swap(&m->A[i], &m->A[0]);
+            // swap(&m->A[i], &m->A[0]);
             printf("Element found at index %d \n", i);
             return i;
         }
@@ -76,40 +74,46 @@ int Linear_Search(struct Array *m, int key)
     printf("Element not found \n");
     return -1;
 }
- int Binary_Search(struct Array *m, int key)
+ int BinarySearch(struct Array m, int key)
  {
-    int low = 0, height = m->length;
-    while(key <= height && key >= low)
+    int low = 0, height = m.length, mid;
+    while(low <= height)
     {
-        int mid = (low + height) / 2;
-        if (key == m->A[mid])
+        mid = (low + height) / 2;
+        if (key == m.A[mid])
             return mid;
-        else if (key < m->A[mid])
+        else if (key < m.A[mid])
             height = mid - 1;
         else
             low = mid + 1;
     }
-     return -1;
+    return -1;
  }
 
- int RBinary_Search(int a[], int low, int height, int key)
- {
-     int mid;
-     if (low <= height){
-         mid = (low + height) / 2;
-         if (key == a[mid])
-             return mid;
-             else if (key < a[mid])
-                 return RBinary_Search(a, low, mid - 1, key);
-             else
-                 return RBinary_Search(a, mid + 1, height, key);
-     }
- }
+
+int recursiveBinarySearch(int arr[], int key, int low, int height)
+{
+    if (low <= height)
+    {
+        int mid = (low + height) / 2;
+        if (key == arr[mid])
+            return mid;
+        else if (key < arr[mid])
+            return recursiveBinarySearch(arr, key, low, mid - 1);
+        else
+            return recursiveBinarySearch(arr, key, mid + 1, height);
+    }
+    return -1;
+}
 
 int main()
 {
-    struct Array arr = {{2,3,5,4,8,6,9,18,1,3,10}, 11, 20};
-    Linear_Search(&arr, 6);
-    printf("The element %d \n",Binary_Search(&arr, 6));
-    printf("The element %d \n", RBinary_Search(arr.A, 0, arr.length, 6));
+    struct Array arr = {{1,2,3,4,5}, 5, 5};
+    Display(arr);
+    Linear_Search(&arr, 2);
+    Display(arr);
+    printf("%d \n", BinarySearch(arr, 2));
+    Display(arr);
+    printf("%d \n", recursiveBinarySearch(arr.A, 3, 0, arr.length));
+    Display(arr);
 }
