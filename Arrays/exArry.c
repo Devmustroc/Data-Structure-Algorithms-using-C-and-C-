@@ -1,10 +1,24 @@
 #include <stdio.h>
 
 struct Array {
-    int A[5];
+    int A[10];
     int length;
     int size;
 };
+
+int count(struct Array m)
+{
+    int count = 0;
+    for (int i = 0; i < m.length; i++)
+    {
+        if (m.A[i] == 0)
+        {
+            break;
+        }
+        count++;
+    }
+    return count;
+}
 
 void Display(struct Array m) {
     for (int i = 0; i <= m.length - 1; i++)
@@ -106,14 +120,31 @@ int recursiveBinarySearch(int arr[], int key, int low, int height)
     return -1;
 }
 
+void get(struct Array m, int index)
+{
+    if(index >= 0 && index < m.length)
+    {
+        printf("Element at index %d is %d \n", index, m.A[index]);
+    }
+}
+
+void set(struct Array *m, int index, int x)
+{
+    if ( index >= 0 && index < m->length)
+    {
+        m->A[index] = x;
+    }
+}
+
 int main()
 {
-    struct Array arr = {{1,2,3,4,5}, 5, 5};
+    struct Array arr = {{1, 2, 3, 4, 5}, 5, 10};
     Display(arr);
     Linear_Search(&arr, 2);
     Display(arr);
-    printf("%d \n", BinarySearch(arr, 2));
+    printf("%d \n", BinarySearch(arr, 4));
     Display(arr);
     printf("%d \n", recursiveBinarySearch(arr.A, 3, 0, arr.length));
     Display(arr);
+    printf("%d \n", count(arr));
 }
