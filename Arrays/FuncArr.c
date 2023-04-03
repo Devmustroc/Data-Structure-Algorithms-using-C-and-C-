@@ -159,7 +159,7 @@ int RecursiveSum(struct array m, int n)
 
 int main()
 {
-    struct array arr = {{8,25,2,5,3,10,0, 50,49,30,52}, 20, 11};
+    struct array arr = {{8,25,2,5,3,10,9, 50,49,30,52}, 20, 11};
     display(arr);
     printf("%d \n",Get(arr, 3));
     Set(&arr, 3, 10);

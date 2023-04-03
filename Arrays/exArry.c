@@ -92,10 +92,24 @@ int Linear_Search(struct Array *m, int key)
      return -1;
  }
 
+ int RBinary_Search(int a[], int low, int height, int key)
+ {
+     int mid;
+     if (low <= height){
+         mid = (low + height) / 2;
+         if (key == a[mid])
+             return mid;
+             else if (key < a[mid])
+                 return RBinary_Search(a, low, mid - 1, key);
+             else
+                 return RBinary_Search(a, mid + 1, height, key);
+     }
+ }
+
 int main()
 {
     struct Array arr = {{2,3,5,4,8,6,9,18,1,3,10}, 11, 20};
-    Display(arr);
     Linear_Search(&arr, 6);
-    printf("The element %d",Binary_Search(&arr, 18));
+    printf("The element %d \n",Binary_Search(&arr, 6));
+    printf("The element %d \n", RBinary_Search(arr.A, 0, arr.length, 6));
 }
