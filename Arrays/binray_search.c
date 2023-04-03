@@ -93,15 +93,27 @@ int BinarySearch(struct array m, int key)
     return -1;
 }
 // Binary Search recursively
-int recursiveBinarySearch(struct array m)
+int recursiveBinarySearch(int arr[], int key, int low, int height)
 {
-    int low = ; height = m.length, mid;
+    int mid;
+    if (low <= height)
+    {
+        mid = (low + height) / 2;
+        if (key == arr[mid])
+            return mid;
+        else if (key < arr[mid])
+            return recursiveBinarySearch(arr, key, low, mid - 1);
+        else
+            return recursiveBinarySearch(arr, key, mid + 1, height);
+    }
+    return -1;
     }
 int main()
 {
     struct array arr = {{1,2,3,4,5}, 10, 5};
     display(arr);
     printf("%d \n", BinarySearch(arr, 5));
+    printf("%d \n", recursiveBinarySearch(arr.A, 5, 0, arr.length));
 
 
     return 0;
