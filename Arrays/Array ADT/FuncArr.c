@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 struct array {
     int A[20];
     int size;
@@ -135,6 +134,20 @@ int Max(struct array m)
             max = m.A[i];
         }
     }
+    return max;
+}
+
+int Min(struct array m)
+{
+    int min = m.A[0];
+    for (int i = 1; i < m.length; i++)
+    {
+        if (min > m.A[i])
+        {
+            min = m.A[i];
+        }
+    }
+    return min;
 }
 
 int Sum(struct array m)
@@ -157,16 +170,23 @@ int RecursiveSum(struct array m, int n)
     }
 }
 
+float Avg(struct array m)
+{
+    return ((float)Sum(m) / m.length);
+}
+
 int main()
 {
-    struct array arr = {{8,25,2,5,3,10,9, 50,49,30,52}, 20, 11};
+    struct array arr = {{8,25,2,5,3,10,9, 50,49,30}, 20, 10};
     display(arr);
-    printf("%d \n",Get(arr, 3));
+    printf("The value of index is: %d \n",Get(arr, 3));
     Set(&arr, 3, 10);
     display(arr);
-    printf("%d \n", Sum(arr));
-    printf("%d \n", RecursiveSum(arr, arr.length));
-    printf("%d \n", Max(arr));
+    printf("The Sum is: %d \n", Sum(arr));
+    printf("the Sum in recursive way is: %d \n", RecursiveSum(arr, arr.length));
+    printf("Max is %d: \n", Max(arr));
+    printf("Min is %d:", Min(arr));
+    printf("The Average is: %.2f \n", Avg(arr));
 
 
 
