@@ -136,15 +136,45 @@ void set(struct Array *m, int index, int x)
     }
 }
 
+int Max(struct Array m)
+{
+    int max = m.A[0];
+    for (int i = 1; i < m.length; i++)
+    {
+        if (m.A[i] > max)
+        {
+            max = m.A[i];
+        }
+    }
+}
+
+int Sum(struct Array m)
+{
+    int total = 0;
+    for (int i = 0; i < m.length; i++)
+    {
+        total += m.A[i];
+    }
+    return total;
+}
+int recursiveSum(struct Array m, int n)
+{
+   if ( n < 0)
+   {
+       return 0;
+   }
+   else {
+       return recursiveSum(m, n - 1) + m.A[n];
+   }
+}
+
 int main()
 {
     struct Array arr = {{1, 2, 3, 4, 5}, 5, 10};
     Display(arr);
-    Linear_Search(&arr, 2);
-    Display(arr);
-    printf("%d \n", BinarySearch(arr, 4));
-    Display(arr);
-    printf("%d \n", recursiveBinarySearch(arr.A, 3, 0, arr.length));
-    Display(arr);
-    printf("%d \n", count(arr));
+    get(arr, 2);
+    set(&arr, 2, 10);
+    printf("Max: %d \n", Max(arr));
+    printf("Sum: %d \n", Sum(arr));
+    printf("Recursive Sum: %d \n", recursiveSum(arr, arr.length - 1));
 }
