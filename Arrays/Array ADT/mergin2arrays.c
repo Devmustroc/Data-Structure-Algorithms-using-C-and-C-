@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 struct array {
-    int A[20];
+    int A[10];
     int size;
     int length;
 };
@@ -251,9 +251,8 @@ void Rearrange(struct array *m)
 
 int main()
 {
-    struct array arr = {{1,-2,10,2,-15, 7}, 20, 6};
-    display(arr);
-    Rearrange(&arr);
-    display(arr);
+    sstruct array arr1 = {{1,4,8,12,19}, 10, 5};
+    struct array arr2 = {{2,3,7,10,15}, 10, 5};
+    struct array *arr3;
     return 0;
 }
